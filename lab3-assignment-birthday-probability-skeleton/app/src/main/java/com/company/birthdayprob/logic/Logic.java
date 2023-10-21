@@ -74,9 +74,24 @@ public class Logic
      * <p>
      * We provide you this method that way we can test it with unit testing.
      */
-    public double calculate(int size, int count) {
-        // TODO -- add your code here
+   public double calculate(int size, int count) {
+        int numTrialSuccess = 0;
+        for (int n = 0; n < count; n++) {
+            Random rand = new Random(n);
 
+            Set<Integer> set = new HashSet<Integer>();
+            for (int i = 0; i < size; i++) {
+                int bday = rand.nextInt(365);
+                Integer bday1 = new Integer(bday);
+                if (set.contains(bday1)) {
+                    numTrialSuccess++;
+                    break;
+                } else {
+                    set.add(bday1);
+                }
+            }
+        }
+        double prob = ((double) numTrialSuccess * 100) / (double) count;
+        return prob;
     }
-    // TODO - add your code here
 }
