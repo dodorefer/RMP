@@ -45,7 +45,58 @@ public class Logic
      */
     public void process(int size) {
 
-        // TODO -- add your code here
+        for (int i = 0; i <= 2 * size; i++) {
+            for (int j = 0; j < 2 * size + 2; j++) {
+                if (i == 0 || i == 2 * size) {
+                    if (j == 0 || j == 2 * size + 1) {
+                        mOut.print("+");
+                    } else {
+                        mOut.print("-");
+                    }
+                } else if (j == 0 || j == 2 * size + 1) {
+                    mOut.print("|");
+                } else if (i < size) {
+                    if (j <= size - i)
+                        mOut.print(" ");
+                    else if (j == size - i + 1)
+                        mOut.print("/");
+                    else if (j > size - i + 1 && j < (2 * size + 1) - size + i - 1 && i % 2 == 0) {
+                        mOut.print("-");
+                    } else if (j > size - i + 1 && j < (2 * size + 1) - size + i - 1 && i % 2 != 0) {
+                        mOut.print("=");
+                    } else if (j == (2 * size + 1) - size + i - 1)
+                        mOut.print("\\");
+                    else {
+                        mOut.print(" ");
+                    }
+                } else if (i == size) {
+                    if (j == 1)
+                        mOut.print("<");
+                    else if (j == 2 * size)
+                        mOut.print(">");
+                    else if (i % 2 == 0)
+                        mOut.print("-");
+                    else {
+                        mOut.print("=");
+                    }
+                } else if (i > size) {
+                    if (j <= i - size)
+                        mOut.print(" ");
+                    else if (j == i - size + 1)
+                        mOut.print("\\");
+                    else if (j > i - size + 1 && j < (2 * size + 1) - i + size - 1 && i % 2 == 0) {
+                        mOut.print("-");
+                    } else if (j > i - size + 1 && j < (2 * size + 1) - i + size - 1 && i % 2 != 0) {
+                        mOut.print("=");
+                    } else if (j == (2 * size + 1) - i + size - 1) {
+                        mOut.print("/");
+                    } else {
+                        mOut.print(" ");
+                    }
+                }
+            }
+            mOut.println("");
+        }
 
     }
 
